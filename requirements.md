@@ -1,11 +1,13 @@
 ## Project Requirements
 
  **1. Game type:**
+ 
 	 - Role-playing game
 	 - Top-down view
 	 - 2D Pixel Sprites
 
 **2. Game world:**
+
 	- Explorable world
 	- Medieval Themed world
 
@@ -21,9 +23,9 @@
 		+ Levels
 		+ Inventory
 		+ Ability set
-		
 
 **4. NPCs:**
+
 	- Fucntional systems:
 		+ Smooth 8-directional movement with fully animated sprites cycle
 		+ Stats (Heath, Mana, Damage,...)
@@ -43,7 +45,9 @@
 			+) Enemy type 5: 
 			+) Boss 1:
 			+) Boss 2:
+
 **5. UI:**
+
 	- Menu screen: Start, Load Save Files, Credits, Settings, Quit
 	- In-game HUD:
 		+ On-screen instructions
@@ -52,6 +56,7 @@
 		+ Conversation bubble
 
 **6. Sound design:**
+
 	- UI navigation sound effects
 	- Gameplay sounds for:
 		+ Character
@@ -61,6 +66,7 @@
 	- Soundtracks
 
 **7. Sprites work for:**
+
 	- Character:
 		+ Design
 		+ Walk, run cycle
