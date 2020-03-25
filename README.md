@@ -1,6 +1,12 @@
-# seproject2020
-This is the software engineering project of group 7 - ICT department of USTH 
+## SE Quest 
+SE Quest is a 2D top-down view RPG - hack and slash game, drawing on 8-bit style.
 
-**SRS**: https://docs.google.com/document/d/1tZIlG79qzgSj81DjUCssQQpA24z2BtMhygM7zwPPyeo/edit
+## Features
+SE Quest has all features of a normal RPG-game. In this game, you will become a hero who will have a special quest. Follow the story line and figure it out.
 
-**SDD**: https://docs.google.com/document/d/1DUhlvBkrEy12i99svlSE4buFFLiZrSov9uaBrwC7lfI/edit
+## Installation and Usage
+There is no any special requirements to run. You only need to download the game, install it like any others normal application and then enjoy it
+
+## Credits
+SE Quest was built on Unity 2019.3.4f1
+All the graphics are made by ourselves.
