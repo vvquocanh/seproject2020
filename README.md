@@ -9,4 +9,5 @@ There is no any special requirements to run. You only need to download the game,
 
 ## Credits
 SE Quest was built on Unity 2019.3.4f1
+
 All the graphics are made by ourselves.
