@@ -9,13 +9,33 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] Animator animator;
     int direction = 3;
+    bool attacking = false;
     Vector2 movement;
     // Update is called once per frame
     void Update()
     {
-        takeInput();
-        setAnimation();
-        Move();
+        if (attacking == false)
+        {
+            takeInput();
+            setAnimation();
+            Move();
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            attacking = true;
+            animator.SetBool("Attack", true);
+        }
+    }
+
+    private void BackToMove()
+    {
+        attacking = false;
+        animator.SetBool("Attack", false);
     }
 
     private void setAnimation()
