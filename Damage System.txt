@@ -1,0 +1,23 @@
+1) Goblin
+ - Health: 477 + 20
+ - Damage: 12 + 0.7
+ - Armor: 0 + 0.2
+ - Gives: 60 + 5 exp
+
+2) Ghost 
+ - Health: 296 + 6
+ - Damage: 20 + 1.5
+ - Armor: 0
+ - Gives: 30 + 1.4 exp
+
+3) Player
+ - Health: 523 + 62.64
+ - Damage: 60 + 2.2 
+ - Armor: 30 + 2.35
+ - Regen: 6.5/s + 0.6
+ - Exp for each level: 280 + 100
+
+4) Potion
+ - Grants 10hp/s for 15 secs
+
+Armor formula: HP lost = (100/(100 + Armor)) * Damage
