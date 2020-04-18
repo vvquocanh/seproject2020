@@ -1,5 +1,5 @@
 ## SE Quest 
-SE Quest is a 2D top-down view RPG - hack and slash game, drawing on 8-bit style.
+SE Quest is a Game project with top-down perspective, Roleplaying Adventure Gameplay and 2D Spriteworks.
 
 ## Features
 The game has all features like a normal RPG game.
