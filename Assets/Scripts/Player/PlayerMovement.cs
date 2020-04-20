@@ -9,9 +9,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D rigid;
     [SerializeField] Animator animator;
     int direction = 3;
-    bool attacking = false;
     Vector2 movement;
-    // Update is called once per frame
+
+    [Header("Attack")]
+    [SerializeField] Transform attackPoint;
+    [SerializeField] float attackRange;
+    [SerializeField] LayerMask goblinLayers;
+    [SerializeField] LayerMask ghostLayers;
+    [SerializeField] PlayerStats stats;
+    bool attacking = false;
     void Update()
     {
         if (attacking == false)
@@ -19,17 +25,61 @@ public class PlayerMovement : MonoBehaviour
             takeInput();
             setAnimation();
             Move();
+            AttackPointChange();
             Attack();
+        }
+    }
+
+    private void AttackPointChange()
+    {
+        if (direction == 1)
+        {
+            attackPoint.transform.position = new Vector2(transform.position.x, transform.position.y + 1);
+        }
+        else if (direction == 2)
+        {
+            attackPoint.transform.position = new Vector2(transform.position.x + 0.7f, transform.position.y);
+        }
+        else if (direction == 3)
+        {
+            attackPoint.transform.position = new Vector2(transform.position.x, transform.position.y - 1);
+        }
+        else if (direction == 4)
+        {
+            attackPoint.transform.position = new Vector2(transform.position.x - 0.7f, transform.position.y);
         }
     }
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown("space"))
         {
             attacking = true;
             animator.SetBool("Attack", true);
         }
+    }
+
+    private void Hit()
+    {
+        Collider2D[] hitGoblins = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, goblinLayers);
+        for (int i = 0; i < hitGoblins.Length; i++)
+        {
+            hitGoblins[i].GetComponent<GoblinStats>().TakeDamage(stats.damage);
+        }
+        Collider2D[] hitGhosts = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, ghostLayers);
+        for (int i = 0; i < hitGhosts.Length; i++)
+        {
+            hitGhosts[i].GetComponent<GhostStats>().TakeDamage(stats.damage);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
     private void BackToMove()

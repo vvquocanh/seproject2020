@@ -5,8 +5,11 @@ using UnityEngine;
 public class Recognized : MonoBehaviour
 {
     public bool recognized = false;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        recognized = true;
+        if (other.tag == "Player")
+        {
+            recognized = true;
+        }
     }
 }

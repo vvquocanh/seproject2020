@@ -6,13 +6,14 @@ public class GhostMovement : MonoBehaviour
 {
     [SerializeField] int direction;
     [SerializeField] Animator animator;
-    [SerializeField] PlayerMovement player;
     [SerializeField] GhostAttack ghost;
     [SerializeField] GameObject projectile;
     float distanceX, distanceY;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         direction = Random.Range(1, 5);
         animator.SetInteger("Direction", direction);
     }

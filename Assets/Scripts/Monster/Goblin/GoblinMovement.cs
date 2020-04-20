@@ -9,8 +9,8 @@ public class GoblinMovement : MonoBehaviour
     [SerializeField] Recognized enemy;
     [SerializeField] float moveTime = 5f;
     [SerializeField] float stopTime = 3f;
-    [SerializeField] PlayerMovement player;
     [SerializeField] Attacked thePlayer;
+    GameObject player;
     float distanceX;
     float distanceY;
     bool busy = true;
@@ -19,6 +19,7 @@ public class GoblinMovement : MonoBehaviour
     int direction;
     private IEnumerator Start()
     {
+        player = GameObject.Find("Player");
         stopTimeStop = stopTime;
         moveTimeStop = moveTime;
         direction = Random.Range(1, 5);

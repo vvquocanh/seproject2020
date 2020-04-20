@@ -6,14 +6,19 @@ public class GhostAttack : MonoBehaviour
 {
     public bool attack = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        attack = true;
+        if (other.tag == "Player")
+        {
+            attack = true;
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        attack = false;
-
+        if (other.tag == "Player")
+        {
+            attack = false;
+        }
     }
 }

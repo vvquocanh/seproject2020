@@ -4,12 +4,30 @@ using UnityEngine;
 
 public class SpawnGoblin : MonoBehaviour
 {
-    int numberOfGoblin = 0;
- 
+    [SerializeField] float waitTime = 10f;
+    float currentTime;
+    [SerializeField] GameObject goblin;
+    GameObject checkGoblin;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        checkGoblin = Instantiate(goblin, transform.position, Quaternion.identity);
+        currentTime = waitTime;
+    }
+
+    private void Update()
+    {
+        if (checkGoblin == null)
+        {
+            if (currentTime > 0)
+            {
+                currentTime -= Time.deltaTime;
+            }
+            else if (currentTime <= 0)
+            {
+                checkGoblin = Instantiate(goblin, transform.position, Quaternion.identity);
+                currentTime = waitTime;
+            }
+        }
     }
 }
