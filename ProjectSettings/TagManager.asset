@@ -14,15 +14,15 @@ TagManager:
   - 
   - 
   - Tile map
-  - Monster
+  - Goblin
   - Player
   - Movement
   - Goblin attack
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Projectile
+  - Ghost attack
+  - Potion
+  - Spawn
+  - Ghost
   - 
   - 
   - 
