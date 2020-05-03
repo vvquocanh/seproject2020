@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class GhostMovement : MonoBehaviour
 {
+    [Header("Idle")]
     [SerializeField] int direction;
     [SerializeField] Animator animator;
     [SerializeField] GhostAttack ghost;
-    [SerializeField] GameObject projectile;
-    float distanceX, distanceY;
+    
+    [Header("Attack")]
     GameObject player;
+    [SerializeField] GameObject projectile;
+    [SerializeField] float waitTime;
+    float currentTime;
+    float distanceX, distanceY;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentTime = waitTime;
         player = GameObject.Find("Player");
         direction = Random.Range(1, 5);
         animator.SetInteger("Direction", direction);
@@ -23,7 +30,16 @@ public class GhostMovement : MonoBehaviour
     {
         if (ghost.attack == true)
         {
-            Attack();
+            if (currentTime > 0)
+            {
+                currentTime -= Time.deltaTime;
+            }
+            else if (currentTime <= 0)
+            {
+                Attack();
+                currentTime = waitTime;
+            }
+            
         } else if (ghost.attack == false)
         {
             animator.SetBool("Attack", false);
@@ -33,6 +49,14 @@ public class GhostMovement : MonoBehaviour
     private void Shoot()
     {
         Instantiate(projectile, transform.position, Quaternion.identity);
+        animator.SetBool("Attack", false);
+    }
+
+    private void setAnimation(float horizontal, float vertical, int direct)
+    {
+        animator.SetFloat("Horizontal", horizontal);
+        animator.SetFloat("Vertical", vertical);
+        animator.SetInteger("Direction", direct);
     }
 
     private void Attack()
@@ -47,30 +71,22 @@ public class GhostMovement : MonoBehaviour
             {
                 if (distanceX < distanceY)
                 {
-                    animator.SetFloat("Horizontal", 0);
-                    animator.SetFloat("Vertical", 1);
-                    animator.SetInteger("Direction", 1);
+                    setAnimation(0, 1, 1);
                 }
                 else if (distanceX > distanceY)
                 {
-                    animator.SetFloat("Vertical", 0);
-                    animator.SetFloat("Horizontal", 1);
-                    animator.SetInteger("Direction", 2);
+                    setAnimation(1, 0, 2);
                 }
             }
             else if (transform.position.y > targetPosition.y)
             {
                 if (distanceX < distanceY)
                 {
-                    animator.SetFloat("Horizontal", 0);
-                    animator.SetFloat("Vertical", -1);
-                    animator.SetInteger("Direction", 3);
+                    setAnimation(0, -1, 3);
                 }
                 else if (distanceX > distanceY)
                 {
-                    animator.SetFloat("Vertical", 0);
-                    animator.SetFloat("Horizontal", 1);
-                    animator.SetInteger("Direction", 2);
+                    setAnimation(1, 0, 2);
                 }
             }
         }
@@ -80,30 +96,22 @@ public class GhostMovement : MonoBehaviour
             {
                 if (distanceX < distanceY)
                 {
-                    animator.SetFloat("Horizontal", 0);
-                    animator.SetFloat("Vertical", 1);
-                    animator.SetInteger("Direction", 1);
+                    setAnimation(0, 1, 1);
                 }
                 else if (distanceX > distanceY)
                 {
-                    animator.SetFloat("Vertical", 0);
-                    animator.SetFloat("Horizontal", -1);
-                    animator.SetInteger("Direction", 4);
+                    setAnimation(-1, 0, 4);
                 }
             }
             else if (transform.position.y > targetPosition.y)
             {
                 if (distanceX < distanceY)
                 {
-                    animator.SetFloat("Horizontal", 0);
-                    animator.SetFloat("Vertical", -1);
-                    animator.SetInteger("Direction", 3);
+                    setAnimation(0, -1, 3);
                 }
                 else if (distanceX > distanceY)
                 {
-                    animator.SetFloat("Vertical", 0);
-                    animator.SetFloat("Horizontal", -1);
-                    animator.SetInteger("Direction", 4);
+                    setAnimation(-1, 0, 4);
                 }
             }
         }

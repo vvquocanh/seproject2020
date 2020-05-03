@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] PlayerMovement player;
+
     [Header("Normal stats")]
     public int level;
     public float maxExp;
@@ -27,6 +29,12 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI speedPotionText;
     public TextMeshProUGUI attackPotionText;
     public TextMeshProUGUI defensePotionText;
+
+    [Header("Time of Potion")]
+    private float maxHPPotionTime = 0;
+    private float speedPotionTime = 0;
+    private float attackPotionTime = 0;
+    private float defensePotionTime = 0;
 
     private void Start()
     {
@@ -57,6 +65,124 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
         updateNumberOfPotion();
+        potionTimeDecreasing();
+    }
+
+    public void useHealthPotion()
+    {
+        if (healthPotion > 0)
+        {
+            healthPotion--;
+            currentHealth += maxHealth / 10;
+            if (currentHealth > maxHealth)
+            {
+                currentHealth = maxHealth;
+            }
+        }
+    }
+
+    public void useMaxHPPotion()
+    {
+        if (maxHPPotion > 0)
+        {
+            maxHPPotion--;
+            if (maxHPPotionTime > 0)
+            {
+                maxHPPotionTime = 30f;
+            }
+            else if (maxHPPotionTime <= 0)
+            {
+                maxHealth = maxHealth * 2;
+                maxHPPotionTime = 30f;
+            }
+        }
+    }
+
+    public void useSpeedPotiom()
+    {
+        if (speedPotion > 0)
+        {
+            speedPotion--;
+            if (speedPotionTime > 0)
+            {
+                speedPotionTime = 30f;
+            }
+            else if (speedPotionTime <= 0)
+            {
+                player.movementSpeed = player.movementSpeed * 2;
+                speedPotionTime = 30f;
+            }
+        }
+    }
+
+    public void useAttackPotion()
+    {
+        if (attackPotion > 0)
+        {
+            attackPotion--;
+            if (attackPotionTime > 0)
+            {
+                attackPotionTime = 30f;
+            }
+            else if (attackPotionTime <= 0)
+            {
+                damage = damage * 2;
+                attackPotionTime = 30f;
+            }
+        }
+    }
+
+    public void useDefensePotion()
+    {
+        if (defensePotion > 0)
+        {
+            defensePotion--;
+            if (defensePotionTime > 0)
+            {
+                defensePotionTime = 30f;
+            }
+            else if (defensePotionTime <= 0)
+            {
+                defense = defense * 2;
+                defensePotionTime = 30f;
+            }
+        }
+    }
+
+    private void potionTimeDecreasing()
+    {
+        if (maxHPPotionTime > 0)
+        {
+            maxHPPotionTime -= Time.deltaTime;
+            if (maxHPPotionTime <= 0)
+            {
+                maxHealth = maxHealth / 2;
+            }
+        }
+        if (attackPotionTime > 0)
+        {
+            attackPotionTime -= Time.deltaTime;
+            if (attackPotionTime <= 0)
+            {
+                damage = damage / 2;
+            }
+        }
+        if (speedPotionTime > 0)
+        {
+            speedPotionTime -= Time.deltaTime;
+            if (speedPotionTime <= 0)
+            {
+                player.movementSpeed = player.movementSpeed / 2;
+            }
+        }
+        if (defensePotionTime > 0)
+        {
+            defensePotionTime -= Time.deltaTime;
+            if (defensePotionTime <= 0)
+            {
+                defense = defense / 2;
+            }
+        }
     }
 
     public void addHealthPotion()
@@ -82,5 +208,14 @@ public class PlayerStats : MonoBehaviour
     public void addDefensePotion()
     {
         defensePotion++;
+    }
+
+    public void takeDamage(float enemyDamage)
+    {
+        currentHealth -= ((100f / (100f + defense) * enemyDamage));
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

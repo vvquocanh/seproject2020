@@ -239,6 +239,7 @@ Transform:
   - {fileID: 2382367001273120625}
   - {fileID: 3435680396333942615}
   - {fileID: 1511784790933882230}
+  - {fileID: 6020560908353183086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -280,7 +281,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 20
   m_Sprite: {fileID: 8034915623552761913, guid: de48c69eb3cf3c24c86830096c0e5709,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -324,12 +325,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87d60ccd7233ff6498191bc15dc996bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 5532069503503335403}
-  speed: 4
   enemy: {fileID: 349954283731318192}
+  thePlayer: {fileID: 2056444459188598110}
+  movementSpeed: 5
   moveTime: 3
   stopTime: 3
-  thePlayer: {fileID: 2056444459188598110}
+  animator: {fileID: 5532069503503335403}
+  attackPoint: {fileID: 6020560908353183086}
+  attackRange: 1
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  stats: {fileID: 3162016747055829609}
 --- !u!50 &349954284453611155
 Rigidbody2D:
   serializedVersion: 4
@@ -368,7 +375,7 @@ MonoBehaviour:
   damage: 12
   armor: 0
   exp: 60
-  spawn: {fileID: 3936024130938783787, guid: a094d83935f3c104f82c8ea738ecc6c5, type: 3}
+  currentHealth: 0
 --- !u!61 &8538140175637827697
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -395,3 +402,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!1 &6247101890060636343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6020560908353183086}
+  m_Layer: 9
+  m_Name: Attack Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6020560908353183086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6247101890060636343}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5532069503503335400}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

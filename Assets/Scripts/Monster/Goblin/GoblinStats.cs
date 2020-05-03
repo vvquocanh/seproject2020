@@ -5,12 +5,12 @@ using UnityEngine;
 public class GoblinStats : MonoBehaviour
 {   
     [Header("Stats")]
-    [SerializeField] float level = 1f;
-    [SerializeField] float health = 477f;
-    [SerializeField] float damage = 12f;
+    [SerializeField] public float level = 1f;
+    [SerializeField] public float health = 477f;
+    [SerializeField] public float damage = 12f;
     [SerializeField] float armor = 0f;
     [SerializeField] float exp = 60f;
-    float currentHealth;
+    public float currentHealth;
     private void Start()
     {
         Initalize();

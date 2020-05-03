@@ -204,8 +204,9 @@ MonoBehaviour:
   direction: 0
   animator: {fileID: 1729677124042892792}
   ghost: {fileID: 4467735694952558649}
-  projectile: {fileID: 3967301139003944893, guid: be70a0a29b7750d479fbd5fca66de24a,
+  projectile: {fileID: 1551717370951104347, guid: 5ed049cacfd77924485521c3deb6f807,
     type: 3}
+  waitTime: 1.5
 --- !u!114 &8106932291476389370
 MonoBehaviour:
   m_ObjectHideFlags: 0

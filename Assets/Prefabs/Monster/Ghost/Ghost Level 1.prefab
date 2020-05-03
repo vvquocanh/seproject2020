@@ -203,10 +203,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: 0
   animator: {fileID: 1183505077219392924}
-  player: {fileID: 0}
   ghost: {fileID: 1183505076680106748}
-  projectile: {fileID: 3967301139003944893, guid: be70a0a29b7750d479fbd5fca66de24a,
+  projectile: {fileID: 2183831390324517203, guid: 90b537f2dd3c1b043be384596e891d4b,
     type: 3}
+  waitTime: 1.5
 --- !u!114 &1183505077219392926
 MonoBehaviour:
   m_ObjectHideFlags: 0

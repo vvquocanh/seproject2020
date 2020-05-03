@@ -5,10 +5,10 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] float damage;
 
     private Transform player;
     private Vector2 target;
-
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -29,6 +29,7 @@ public class Fireball : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            FindObjectOfType<PlayerStats>().takeDamage(damage);
             DestroyProjectile();
         }
     }

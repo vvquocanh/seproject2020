@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 1711442145231067625}
   m_Layer: 11
   m_Name: Foot Collider
-  m_TagString: Untagged
+  m_TagString: Foot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
