@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-   public void LoadMenuScene()
+   public void LoadMenuScreen()
     {
         SceneManager.LoadScene("Menu Screen");      
     }
@@ -13,5 +13,19 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameScreen()
     {
         SceneManager.LoadScene("Game Screen");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits Screen");
+    }
+
+    public void LoadTutorial()
+    {
+        SceneManager.LoadScene("Tutorial Screen");
     }
 }

@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Level 1
+    uniqueID: 3135696267
+    locked: 0
+  - name: Level 2
+    uniqueID: 210285315
+    locked: 0
+  - name: Level 3
+    uniqueID: 2846534627
+    locked: 0
+  - name: Miscs
+    uniqueID: 2655395449
+    locked: 0
+  - name: Players & NPC
+    uniqueID: 2961217595
+    locked: 0
